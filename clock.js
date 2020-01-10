@@ -14,7 +14,8 @@ function draw() {
     let hr = date.getHours() % 12;
     let min = date.getMinutes();
     let sec = date.getSeconds();
-    //console.log(hr+":"+min+":"+sec);
+    let ms = date.getMilliseconds();
+    console.log(hr+":"+min+":"+sec+"."+ms);
     //ctx.fillStyle = '#274060';
     ctx.fillStyle = '#5B9EE5';
     ctx.font = '48px Varela Round';
@@ -26,9 +27,15 @@ function draw() {
     ctx.strokeStyle = '#1A2E47';
     ctx.lineWidth = 10;
     ctx.beginPath();
+    ctx.lineCap = 'round';
     let secondsRange = map(sec, 0, 59, 0, degToRadians(360));
     ctx.arc(canvas.width/2, canvas.height/2, 275, 0, secondsRange);
     ctx.stroke();
+
+    // ms
+    ctx.strokeStyle = '#1A2E47';
+    let msRange = map(sec, 0, 9, 0, degToRadians(360));
+    ctx.arc(canvas.width/2, canvas.height/2, 230, 0, msRange);
 
     // minutes arc
     //ctx.strokeStyle = '#335C81';
